@@ -1,21 +1,41 @@
 package com.akihabara.market.model;
 
-
 public class ProductoOtaku {
+
+    private int id;
     private String nombre;
     private String categoria;
     private double precio;
     private int stock;
 
-    // Este es el constructor vacio
+    // Constructor vacío (por si lo necesitas para formularios o setters)
     public ProductoOtaku() {
     }
-    // Este es el contructor con todos loa atributos
+
+    // Constructor completo
+    public ProductoOtaku(int id, String nombre, String categoria, double precio, int stock) {
+        this.id = id;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.precio = precio;
+        this.stock = stock;
+    }
+
+    // Constructor sin ID (útil para agregar nuevos productos)
     public ProductoOtaku(String nombre, String categoria, double precio, int stock) {
         this.nombre = nombre;
         this.categoria = categoria;
         this.precio = precio;
         this.stock = stock;
+    }
+
+    // Getters y Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -49,14 +69,15 @@ public class ProductoOtaku {
     public void setStock(int stock) {
         this.stock = stock;
     }
-    // Extrae el productor por nombre 
+
     @Override
     public String toString() {
         return "ProductoOtaku {" +
-                "Nombre='" + nombre + '\'' +
-                ", Categoria='" + categoria + '\'' +
-                ", Precio=" + precio +
-                ", Stock=" + stock +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", precio=" + precio +
+                ", stock=" + stock +
                 '}';
     }
 }
