@@ -1,5 +1,3 @@
-
-
 import com.akihabara.market.dao.ProductoDAO;
 import com.akihabara.market.model.ProductoOtaku;
 import com.akihabara.market.service.LlmService;
@@ -8,11 +6,11 @@ import com.akihabara.market.view.InterfazConsola;
 import java.util.List;
 
 public class Main {
-// Método principal que inicia la aplicación de consola.
+
     public static void main(String[] args) {
-        InterfazConsola vista = new InterfazConsola();   // Vista para interacción por consola
-        ProductoDAO dao = new ProductoDAO();			// DAO para operaciones con productos
-        LlmService llmService = new LlmService();		// Servicio de IA para sugerencias
+        InterfazConsola vista = new InterfazConsola();
+        ProductoDAO dao = new ProductoDAO();
+        LlmService llmService = new LlmService();
 
         boolean salir = false;
 
@@ -22,7 +20,7 @@ public class Main {
 
             try {
                 switch (opcion) {
-                    case 1 -> {    // Añadir nuevo producto
+                    case 1 -> {
                         String nombre = vista.leerTexto("Nombre del producto: ");
                         String categoria = vista.leerTexto("Categoría: ");
                         double precio = vista.leerDouble("Precio: ");
@@ -33,7 +31,7 @@ public class Main {
                         vista.mostrarMensaje("Producto añadido con éxito.");
                     }
 
-                    case 2 -> {    // Consultar producto por ID
+                    case 2 -> {
                         int id = vista.leerEntero("ID del producto: ");
                         ProductoOtaku prod = dao.obtenerProductoPorId(id);
                         if (prod != null)
@@ -42,7 +40,7 @@ public class Main {
                             vista.mostrarError("Producto no encontrado.");
                     }
 
-                    case 3 -> {   // Mostrar todos los productos
+                    case 3 -> {
                         List<ProductoOtaku> productos = dao.obtenerTodosLosProductos();
                         if (productos.isEmpty())
                             vista.mostrarMensaje("No hay productos registrados.");
@@ -50,7 +48,7 @@ public class Main {
                             productos.forEach(p -> vista.mostrarProducto(p.toString()));
                     }
 
-                    case 4 -> {   // Buscar por nombre
+                    case 4 -> {
                         String nombre = vista.leerTexto("Nombre a buscar: ");
                         List<ProductoOtaku> porNombre = dao.buscarProductosPorNombre(nombre);
                         if (porNombre.isEmpty())
@@ -59,7 +57,7 @@ public class Main {
                             porNombre.forEach(p -> vista.mostrarProducto(p.toString()));
                     }
 
-                    case 5 -> {  // Buscar por categoría
+                    case 5 -> {
                         String categoria = vista.leerTexto("Categoría a buscar: ");
                         List<ProductoOtaku> porCat = dao.buscarProductosPorCategoria(categoria);
                         if (porCat.isEmpty())
@@ -68,7 +66,7 @@ public class Main {
                             porCat.forEach(p -> vista.mostrarProducto(p.toString()));
                     }
 
-                    case 6 -> {   // Actualizar producto existente
+                    case 6 -> {
                         int id = vista.leerEntero("ID del producto a actualizar: ");
                         ProductoOtaku existente = dao.obtenerProductoPorId(id);
                         if (existente == null) {
@@ -81,18 +79,17 @@ public class Main {
 
                             ProductoOtaku actualizado = new ProductoOtaku(id, nuevoNombre, nuevaCategoria, nuevoPrecio, nuevoStock);
                             dao.actualizarProducto(actualizado);
-                            vista.mostrarMensaje("Producto actualizado correctamente.");
+                            vista.mostrarMensaje("✅ Producto actualizado correctamente.");
                         }
                     }
 
-                    case 7 -> {  // Eliminar producto por ID
+                    case 7 -> {
                         int id = vista.leerEntero("ID del producto a eliminar: ");
                         dao.eliminarProducto(id);
-                        vista.mostrarMensaje("Producto eliminado.");
+                        vista.mostrarMensaje("Producto eliminado (si existía).");
                     }
 
                     case 8 -> {
-                        // Opción sugerir nombre con IA
                         String tipo = vista.leerTexto("Introduce el tipo de producto otaku: ");
                         String franquicia = vista.leerTexto("Introduce la franquicia: ");
 
@@ -105,7 +102,7 @@ public class Main {
                         }
                     }
 
-                    case 9 -> { // Salir del programa
+                    case 9 -> {
                         salir = true;
                         vista.mostrarMensaje("Saliendo del programa. ¡Hasta luego!");
                     }

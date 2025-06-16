@@ -1,62 +1,83 @@
+
 package com.akihabara.market.model;
 
-
+//Clase que representa un producto otaku
 public class ProductoOtaku {
-    private String nombre;
-    private String categoria;
-    private double precio;
-    private int stock;
 
-    // Este es el constructor vacio
-    public ProductoOtaku() {
-    }
-    // Este es el contructor con todos loa atributos
-    public ProductoOtaku(String nombre, String categoria, double precio, int stock) {
-        this.nombre = nombre;
-        this.categoria = categoria;
-        this.precio = precio;
-        this.stock = stock;
-    }
+ private int id;             // ID del producto
+ private String nombre;      // Nombre del producto
+ private String categoria;   // Categoría (figuras, mangas, etc.)
+ private double precio;      // Precio del producto
+ private int stock;          // Unidades en stock
 
-    public String getNombre() {
-        return nombre;
-    }
+ // Constructor vacío
+ public ProductoOtaku() {
+ }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+ // Constructor con ID (para productos ya registrados)
+ public ProductoOtaku(int id, String nombre, String categoria, double precio, int stock) {
+     this.id = id;
+     this.nombre = nombre;
+     this.categoria = categoria;
+     this.precio = precio;
+     this.stock = stock;
+ }
 
-    public String getCategoria() {
-        return categoria;
-    }
+ // Constructor sin ID (para nuevos productos)
+ public ProductoOtaku(String nombre, String categoria, double precio, int stock) {
+     this.nombre = nombre;
+     this.categoria = categoria;
+     this.precio = precio;
+     this.stock = stock;
+ }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
+ public int getId() {
+     return id;
+ }
 
-    public double getPrecio() {
-        return precio;
-    }
+ public void setId(int id) {
+     this.id = id;
+ }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
+ public String getNombre() {
+     return nombre;
+ }
 
-    public int getStock() {
-        return stock;
-    }
+ public void setNombre(String nombre) {
+     this.nombre = nombre;
+ }
 
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-    // Extrae el productor por nombre 
-    @Override
-    public String toString() {
-        return "ProductoOtaku {" +
-                "Nombre='" + nombre + '\'' +
-                ", Categoria='" + categoria + '\'' +
-                ", Precio=" + precio +
-                ", Stock=" + stock +
-                '}';
-    }
+ public String getCategoria() {
+     return categoria;
+ }
+
+ public void setCategoria(String categoria) {
+     this.categoria = categoria;
+ }
+
+ public double getPrecio() {
+     return precio;
+ }
+
+ public void setPrecio(double precio) {
+     this.precio = precio;
+ }
+
+ public int getStock() {
+     return stock;
+ }
+
+ public void setStock(int stock) {
+     this.stock = stock;
+ }
+
+ // Representación del producto en forma de texto
+ @Override
+ public String toString() {
+     return "id=" + id +
+             ", nombre='" + nombre + '\'' +
+             ", categoria='" + categoria + '\'' +
+             ", precio=" + precio +
+             ", stock=" + stock                ;
+ }
 }
